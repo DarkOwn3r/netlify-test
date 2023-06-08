@@ -4,19 +4,19 @@ const handler = async (event) => {
     const operation = event.queryStringParameters.operation;
     const num1 = parseInt(event.queryStringParameters.num1) || 0;
     const num2 = parseInt(event.queryStringParameters.num2) || 0;
-    let result;
-    if (operation === "+" || operation === "suma") {
+    let result = 0;
+    if (operation === "sumar") {
       result = num1 + num2;
-    } else if (operation === "-" || operation === "resta") {
+    } else if (operation === "restar") {
       result = num1 - num2;
-    } else if (operation === "*" || operation === "multiplicacion") {
+    } else if (operation === "multiplicar") {
       result = num1 * num2;
-    } else if (operation === "/" || operation === "division") {
+    } else if (operation === "dividir") {
       result = num1 / num2;
     }
     return {
       statusCode: 200,
-      body: JSON.stringify({ resultado: `${result}` }),
+      body: JSON.stringify({ resultado: result }),
     };
   } catch (error) {
     return { statusCode: 500, body: error.toString() };
